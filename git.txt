@@ -1,0 +1,42 @@
+1.
+    Working dir: The Working folder including the files are not added to Staging Area.
+    Staging Area: Including the files added by "git add '<filename>'".
+    Respository: The area including files are commited.
+2.
+    git commit
+        . | to commit all files to Respository.
+        <filename> | to add file.
+    -m 'Remark' | to add the details of this commit.
+3.
+    git status
+        Showing the files in Working dir added and not be added to Staging Area.
+4.
+    git log
+        Showing the commits are commited to Respository.
+5.
+    git show <commit id>
+        Showing details of commit by commit id.
+6.
+    git diff
+        Showing the difference between the new commit and old commit or commited file with current file.
+7.
+    git checkout
+        -- <filename> | remove the changed part of modified file to make the file the same with last commited file.
+    git reset
+        HEAD <filename> | to remove the file added from Staging Area to Working dir.
+8.
+    git checkout -b <branch-name> | creat a new branch.
+    git branch | check branch worked in.
+        -D <branch> | Delete a branch.
+    git checkout <branch> | Move to <branch>
+    git merger
+        <branch> | merger branch to master (have to switch to master branch before run merger).
+9. 
+    git reset
+        --soft <id> | reset to assigned commit and the commited file appear at Staging Area.
+        --mixed <id> | reset to assigned commit and the commited file appear at Working Dir.
+        --hard <id> | reset to assigned commit and delete all the file after last commit.
+10. 
+    git revert <id> | edit a commit without delete other commits after that by creating a new commit.
+11.
+    .gitignore | a file in working folder to ensure that git will ignore folder or file defined on that.
