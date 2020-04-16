@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>List</title>
+</head>
+<body>
+  <input type="text" id="inputvalue">
+  <button onclick = "addItem()">Add</button>
+  <div id="list">
+  </div>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script type="text/javascript">
+    axios.get('http://localhost:9081/data').then(function(res){
+        if (res.data){
+          render(res.data);
+        }
+    });
+
+    function render(data){
+      var x = document.getElementById("list");
+      var content = data.map(function(item){
+        return '<li>'+item.name+' | <button id = "' + item.id + '" onclick = "xoaItem(event)">del</button></li>';
+      });
+      x.innerHTML = content.join('');
+      var json = JSON.stringify(data);
+      localStorage.setItem('data', json);
+    };
+    
+    function addItem(){
+      var item = document.getElementById('inputvalue');
+      var data = axios.get('http://localhost:9081/data').then(function(res){
+          return res.data;
+      })
+      var lastDataItemId = data.length;
+      if (item.value !== ''){
+        var newItem = { name: item.value, id: lastDataItemId };
+        axios.post('http://localhost:9081/data', newItem).then(function(res){
+          axios.get('http://localhost:9081/data').then(function(res){
+            render(res.data);
+            inputvalue.value = '';
+          })
+        });
+      }
+    }
+
+    function xoaItem(event){
+      var id = parseInt(event.target.id);
+      axios.delete('http://localhost:9081/data/'+id).then(function(res){
+        axios.get('http://localhost:9081/data').then(function(res){
+            render(res.data);
+          })
+      });
+    }
+
+  </script>
+  
+</body>
+</html>
+asdiaksjdlaskf
+asd
+asdiaksjdlaskfdasf
+asfasdasd
+asfasdasd
